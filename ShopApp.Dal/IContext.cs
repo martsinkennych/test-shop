@@ -9,9 +9,9 @@ namespace ShopApp.Dal
     public interface IContext
     {
         void AddGood(string name, int amount, int barcode);
-        void EditGood(int id);
+        void EditGood(int id, string name, int amount, int barcode);
         void DeleteGood(int id);
-        Good GetGood();
+        Good GetGood(int id);
         List<Good> GetAll();
     }
 }

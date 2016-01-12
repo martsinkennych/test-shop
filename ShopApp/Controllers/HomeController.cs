@@ -1,4 +1,5 @@
 ﻿using ShopApp.BL;
+using ShopApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,19 @@ namespace ShopApp.Controllers
         public ActionResult Index()
         {
             return View(service.GetAll());
+        }
+
+        public ActionResult Edit(int id)
+        {
+            return View(service.GetGood(id));
+        }
+
+        [HttpPost]
+        public ActionResult Edit(GoodViewModel good)
+        {
+            service.EditGood(good);
+
+            return RedirectToAction("Index");
         }
     }
 }

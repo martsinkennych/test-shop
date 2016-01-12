@@ -27,9 +27,9 @@ namespace ShopApp.BL
             throw new NotImplementedException();
         }
 
-        public void EditGood(int id)
+        public void EditGood(GoodViewModel good)
         {
-            throw new NotImplementedException();
+            context.EditGood(good.Id, good.Name, good.Amount, good.BarCode);
         }
 
         public List<GoodViewModel> GetAll()
@@ -44,9 +44,18 @@ namespace ShopApp.BL
             return result;
         }
 
-        public GoodViewModel GetGood()
+        public GoodViewModel GetGood(int id)
         {
-            throw new NotImplementedException();
+            GoodViewModel result = new GoodViewModel();
+
+            var good = context.GetGood(id);
+
+            result.Id = good.Id;
+            result.Name = good.Name;
+            result.Amount = good.Amount;
+            result.BarCode = good.BarCode;
+
+            return result;
         }
     }
 }
