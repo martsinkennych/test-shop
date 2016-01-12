@@ -17,9 +17,9 @@ namespace ShopApp.BL
             context = c;
         }
 
-        public void AddGood(string name, int amount, int barcode)
+        public void AddGood(GoodViewModel good)
         {
-            throw new NotImplementedException();
+            context.AddGood(good.Name, good.Amount, good.BarCode);
         }
 
         public void DeleteGood(int id)

@@ -56,7 +56,18 @@ namespace ShopApp.Dal
 
         public void AddGood(string name, int amount, int barcode)
         {
-            throw new NotImplementedException();
+            string query = "insert into GoodsTable (Name, Amount, BarCode) values ('";
+            query += name + "', " + amount.ToString() + ", " + barcode.ToString() + ")";
+
+            OleDbConnection cnn = new OleDbConnection(ConnString);
+            OleDbCommand cmd = new OleDbCommand(query, cnn);
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            cnn.Open();
+
+            cmd.ExecuteNonQuery();
+
+            cnn.Close();
         }
 
         public void DeleteGood(int id)

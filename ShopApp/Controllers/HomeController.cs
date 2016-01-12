@@ -35,5 +35,18 @@ namespace ShopApp.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(GoodViewModel good)
+        {
+            service.AddGood(good);
+
+            return RedirectToAction("Index");
+        }
     }
 }

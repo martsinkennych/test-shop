@@ -9,7 +9,7 @@ namespace ShopApp.BL
 {
     public interface IGoodService
     {
-        void AddGood(string name, int amount, int barcode);
+        void AddGood(GoodViewModel good);
         void EditGood(GoodViewModel good);
         void DeleteGood(int id);
         GoodViewModel GetGood(int id);
