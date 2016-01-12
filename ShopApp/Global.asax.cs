@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopApp.Dependency;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace ShopApp
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            DependencyResolver.SetResolver(new MyDepResolver());
         }
     }
 }
