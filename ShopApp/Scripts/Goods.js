@@ -37,18 +37,18 @@ Goods = {
     },
 
     parseGoods: function (goods) {
-        var result = "<table>";
+        var result = "<table class = 'goodsTable'>";
         result += "<tr>";
-        result += "<td>Name</td>";
-        result += "<td>Amount</td>";
-        result += "<td>Bar-code</td>";
+        result += "<td><h5><center>Name</center></h5></td>";
+        result += "<td><h5><center>Amount</center></h5></td>";
+        result += "<td><h5><center>Bar-code</center></h5></td>";
+        result += "<td></td><td></td>";
         result += "</tr>";
         for (var i = 0; i < goods.length; i++) {
             result += "<tr>";
             result += "<td>" + goods[i].Name + "</td>";
             result += "<td>" + goods[i].Amount + "</td>";
             result += "<td>" + goods[i].BarCode + "</td>";
-            //result += "<td>" + "<input type='button' value='delete' class='deleteBtn' id='" + goods[i].Id + "'></td>";
             result += "<td>" + "<a href='#' class='deleteEdit' id='" + goods[i].Id + "'>Delete</a>";
             result += "<td>" + "<a href='/Home/Edit/" + goods[i].Id + "'>Edit</a>";
             result += "</tr>";
