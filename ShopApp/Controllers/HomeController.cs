@@ -20,7 +20,14 @@ namespace ShopApp.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            return View(service.GetAll());
+            return View();
+        }
+
+        public JsonResult Goods()
+        {
+            var data = service.GetAll();
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Edit(int id)
@@ -47,6 +54,11 @@ namespace ShopApp.Controllers
             service.AddGood(good);
 
             return RedirectToAction("Index");
+        }
+
+        public void Delete(int id)
+        {
+            service.DeleteGood(id);            
         }
     }
 }

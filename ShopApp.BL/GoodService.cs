@@ -24,7 +24,7 @@ namespace ShopApp.BL
 
         public void DeleteGood(int id)
         {
-            throw new NotImplementedException();
+            context.DeleteGood(id);
         }
 
         public void EditGood(GoodViewModel good)

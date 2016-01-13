@@ -17,7 +17,7 @@ namespace ShopApp.Dal
             {
                 return ConfigurationManager.ConnectionStrings["DbConnection"].ToString();
             }
-        }
+        }              
 
         public List<Good> GetAll()
         {
@@ -54,11 +54,8 @@ namespace ShopApp.Dal
             return result;
         }
 
-        public void AddGood(string name, int amount, int barcode)
+        private void QueryExecution(string query)
         {
-            string query = "insert into GoodsTable (Name, Amount, BarCode) values ('";
-            query += name + "', " + amount.ToString() + ", " + barcode.ToString() + ")";
-
             OleDbConnection cnn = new OleDbConnection(ConnString);
             OleDbCommand cmd = new OleDbCommand(query, cnn);
             cmd.CommandType = System.Data.CommandType.Text;
@@ -70,9 +67,19 @@ namespace ShopApp.Dal
             cnn.Close();
         }
 
+        public void AddGood(string name, int amount, int barcode)
+        {
+            string query = "insert into GoodsTable (Name, Amount, BarCode) values ('";
+            query += name + "', " + amount.ToString() + ", " + barcode.ToString() + ")";
+
+            QueryExecution(query);
+        }
+
         public void DeleteGood(int id)
         {
-            throw new NotImplementedException();
+            string query = "delete from GoodsTable where Id = " + id.ToString();
+
+            QueryExecution(query);
         }
 
         public void EditGood(int id, string name, int amount, int barcode)
@@ -80,15 +87,7 @@ namespace ShopApp.Dal
             string query = "update GoodsTable set Name = '" + name + "', Amount = " + amount.ToString();
                    query += ", BarCode = " + barcode.ToString() + " where Id = " + id.ToString();
 
-            OleDbConnection cnn = new OleDbConnection(ConnString);
-            OleDbCommand cmd = new OleDbCommand(query, cnn);
-            cmd.CommandType = System.Data.CommandType.Text;
-
-            cnn.Open();
-
-            cmd.ExecuteNonQuery();
-            
-            cnn.Close();
+            QueryExecution(query);
         }        
 
         public Good GetGood(int id)

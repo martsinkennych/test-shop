@@ -1,45 +1,13 @@
-﻿@model IEnumerable<ShopApp.ViewModels.GoodViewModel>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
 <h2>Goods</h2>
+<script src="~/Scripts/Goods.js"></script>
 
 <p>
     @Html.ActionLink("Add new good", "Add")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Amount
-        </th>
-        <th>
-            Bar-code
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Amount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BarCode)
-        </td>
-        <td>
-            <a href="/Home/Edit/@item.Id">Edit</a>
-            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+<input type="button" value="Show goods" id="loadGoods" />
+<div id="goods"></div>
